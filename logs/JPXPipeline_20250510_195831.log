@@ -1,0 +1,55 @@
+2025-05-10 19:58:31,422 - JPXPipeline - INFO - Loading data...
+2025-05-10 19:58:31,675 - JPXPipeline - INFO - Data loaded successfully. Shape: (269881, 13)
+2025-05-10 19:58:31,675 - JPXPipeline - INFO - Creating features...
+2025-05-10 19:58:35,310 - JPXPipeline - ERROR - Pipeline failed: incompatible index of inserted column with frame index
+Traceback (most recent call last):
+  File "C:\Users\BeRo074\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\frame.py", line 12687, in _reindex_for_setitem
+    reindexed_value = value.reindex(index)._values
+                      ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BeRo074\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\series.py", line 5153, in reindex
+    return super().reindex(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\BeRo074\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\generic.py", line 5610, in reindex
+    return self._reindex_axes(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BeRo074\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\generic.py", line 5633, in _reindex_axes
+    new_index, indexer = ax.reindex(
+                         ^^^^^^^^^^^
+  File "C:\Users\BeRo074\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\indexes\base.py", line 4433, in reindex
+    target = self._wrap_reindex_result(target, indexer, preserve_names)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BeRo074\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\indexes\multi.py", line 2717, in _wrap_reindex_result
+    target = MultiIndex.from_tuples(target)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BeRo074\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\indexes\multi.py", line 222, in new_meth
+    return meth(self_or_cls, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BeRo074\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\indexes\multi.py", line 617, in from_tuples
+    arrays = list(lib.tuples_to_object_array(tuples).T)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "lib.pyx", line 3029, in pandas._libs.lib.tuples_to_object_array
+ValueError: Buffer dtype mismatch, expected 'Python object' but got 'long long'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\jpx_stock_prediction\src\pipeline\main_pipeline.py", line 201, in run_pipeline
+    df = self.create_features(df)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\jpx_stock_prediction\src\pipeline\main_pipeline.py", line 111, in create_features
+    df = calculate_technical_indicators(df)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\jpx_stock_prediction\src\data_processing\feature_engineering.py", line 61, in calculate_technical_indicators
+    df['MACD'] = exp1 - exp2
+    ~~^^^^^^^^
+  File "C:\Users\BeRo074\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\frame.py", line 4311, in __setitem__
+    self._set_item(key, value)
+  File "C:\Users\BeRo074\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\frame.py", line 4524, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BeRo074\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\frame.py", line 5263, in _sanitize_column
+    return _reindex_for_setitem(value, self.index)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BeRo074\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\frame.py", line 12694, in _reindex_for_setitem
+    raise TypeError(
+TypeError: incompatible index of inserted column with frame index

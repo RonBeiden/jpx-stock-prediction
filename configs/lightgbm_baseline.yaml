@@ -1,0 +1,27 @@
+data:
+  train_path: 'data/raw/train'
+  test_path: 'data/raw/test'
+  processed_path: 'data/processed'
+  submission_path: 'data/submissions'
+
+features:
+  lag_features: ['Open', 'High', 'Low', 'Close', 'Volume', 'Target']
+  lag_periods: [1, 2, 3, 5, 10]
+  rolling_windows: [5, 10, 21]
+  technical_indicators: true
+
+model:
+  type: 'lightgbm'
+  params:
+    lightgbm:
+      objective: 'regression'
+      metric: 'rmse'
+      boosting_type: 'gbdt'
+      num_leaves: 31
+      learning_rate: 0.05
+      feature_fraction: 0.9
+
+training:
+  test_size: 0.2
+  random_state: 42
+  cv_folds: 5

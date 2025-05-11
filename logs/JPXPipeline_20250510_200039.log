@@ -1,0 +1,32 @@
+2025-05-10 20:00:39,484 - JPXPipeline - INFO - Loading data...
+2025-05-10 20:00:39,733 - JPXPipeline - INFO - Data loaded successfully. Shape: (269881, 13)
+2025-05-10 20:00:39,739 - JPXPipeline - INFO - Creating features...
+2025-05-10 20:00:49,781 - JPXPipeline - INFO - Features created. New shape: (269881, 91)
+2025-05-10 20:00:49,781 - JPXPipeline - INFO - Preparing train/test split...
+2025-05-10 20:00:49,892 - JPXPipeline - INFO - Train shape: (213975, 91), Test shape: (55906, 91)
+2025-05-10 20:00:49,960 - JPXPipeline - INFO - Training lightgbm model...
+2025-05-10 20:00:50,123 - JPXPipeline - ERROR - Pipeline failed: Input y contains NaN.
+Traceback (most recent call last):
+  File "C:\jpx_stock_prediction\src\pipeline\main_pipeline.py", line 216, in run_pipeline
+    model = self.train_model(X_train, y_train)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\jpx_stock_prediction\src\pipeline\main_pipeline.py", line 155, in train_model
+    model.fit(X_train, y_train)
+  File "C:\Users\BeRo074\AppData\Local\Programs\Python\Python311\Lib\site-packages\lightgbm\sklearn.py", line 1398, in fit
+    super().fit(
+  File "C:\Users\BeRo074\AppData\Local\Programs\Python\Python311\Lib\site-packages\lightgbm\sklearn.py", line 949, in fit
+    _X, _y = _LGBMValidateData(
+             ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BeRo074\AppData\Local\Programs\Python\Python311\Lib\site-packages\lightgbm\compat.py", line 78, in validate_data
+    X, y = check_X_y(
+           ^^^^^^^^^^
+  File "C:\Users\BeRo074\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\utils\validation.py", line 1289, in check_X_y
+    y = _check_y(y, multi_output=multi_output, y_numeric=y_numeric, estimator=estimator)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BeRo074\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\utils\validation.py", line 1311, in _check_y
+    _assert_all_finite(y, input_name="y", estimator_name=estimator_name)
+  File "C:\Users\BeRo074\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\utils\validation.py", line 126, in _assert_all_finite
+    _assert_all_finite_element_wise(
+  File "C:\Users\BeRo074\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\utils\validation.py", line 175, in _assert_all_finite_element_wise
+    raise ValueError(msg_err)
+ValueError: Input y contains NaN.

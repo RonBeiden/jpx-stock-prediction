@@ -1,0 +1,6 @@
+2025-05-10 20:01:45,935 - experiments - INFO - 
+Running experiment with config: C:\jpx_stock_prediction\configs\lightgbm_baseline.yaml
+2025-05-10 20:01:57,967 - experiments - INFO - Results: {'weighted_correlation': 0.7415635836571892, 'rmse': 0.014969127570130521, 'mae': 0.01047669130210197}
+2025-05-10 20:01:57,967 - experiments - WARNING - Config file not found: C:\jpx_stock_prediction\configs\lightgbm_optimized.yaml
+2025-05-10 20:01:57,967 - experiments - WARNING - Config file not found: C:\jpx_stock_prediction\configs\xgboost_baseline.yaml
+2025-05-10 20:01:57,967 - experiments - WARNING - Config file not found: C:\jpx_stock_prediction\configs\lstm_baseline.yaml
